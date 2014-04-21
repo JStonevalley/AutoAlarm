@@ -1,0 +1,90 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Automatic_Alarm.EditAutomaticAlarm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="AutoAlarm" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Automatic Alarm" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="help_text" Grid.Row="0" Text="AutoAlarm searches your calendar for &#x0a;the first event of the day. &#x0a; The time you set in the box below is the time&#x0a; you need to get from bed to that event.&#x0a; This is done for each morning the following week." FontSize="{StaticResource PhoneFontSizeSmall}" TextAlignment="Center" Height="Auto" Visibility="Collapsed"/>
+                <Button x:Name="help_btn" Grid.Row="0" Content="Help" Width="70" Height="50" Click="help_btn_Click" FontSize="{StaticResource PhoneFontSizeSmall}" BorderBrush="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="-15" Foreground="{StaticResource PhoneAccentBrush}" FontStyle="Italic"/>
+                <Border x:Name="border_1" BorderThickness="20" BorderBrush="Transparent" Grid.Row="1"/>
+                <Grid Background="Transparent" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="bed_work" Grid.Column="0" Text="From bed to work:" VerticalAlignment="Center" TextAlignment="Center" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                    <toolkit:TimePicker x:Name="timepick" Grid.Column="1" Language="Swedish" ValueChanged="timepick_ValueChanged_1" FontSize="{StaticResource PhoneFontSizeLarge}" HorizontalAlignment="Center" Foreground="{StaticResource PhoneAccentBrush}"/>
+                </Grid>
+                <Border x:Name="border_2" BorderThickness="15" BorderBrush="Transparent" Grid.Row="3"/>
+                <TextBlock Grid.Row="4" Text="Tone" FontSize="{StaticResource PhoneFontSizeLarge}" HorizontalAlignment="Center" />
+                <Button x:Name="tune_select" Grid.Row="5" Click="tune_select_Click_1" Content="Select Tune" Width="Auto"/>
+                <Border x:Name="border_3" BorderThickness="15" BorderBrush="Transparent" Grid.Row="6"/>
+                <Border BorderThickness="2" Grid.Row="7"/>
+                <Border x:Name="border_4" BorderThickness="15" BorderBrush="Transparent" Grid.Row="8"/>
+                <Button x:Name="set_alarm" Grid.Row="9" Content="Set alarms for the week" Click="Set_alarm_Click" VerticalAlignment="Bottom" Padding="20" Width="320"/>
+                <MediaElement x:Name="mediaplayer2" Grid.Row="10" AutoPlay="False"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

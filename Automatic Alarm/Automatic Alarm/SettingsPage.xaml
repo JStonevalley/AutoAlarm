@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Automatic_Alarm.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="AutoAlarm" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Settings" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="SettingsPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.Background>
+                <ImageBrush ImageSource="Icons/SettingsGear.png" Stretch="UniformToFill" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="105"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="Default tone" HorizontalAlignment="Center"/>
+            <Button x:Name="default_tone_btn" Grid.Row="2" Grid.Column="1" Click="tone_select_Click" Width="240" Foreground="{StaticResource PhoneAccentBrush}"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="Late alarms warning" HorizontalAlignment="Center"/>
+            <toolkit:TimePicker x:Name="default_time_picker" Grid.Row="4" Grid.Column="1" Language="Swedish" Foreground="{StaticResource PhoneAccentBrush}" ValueChanged="time_value_Changed" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="Livetile" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="Shows next alarm and a counter for&#x0a;the amount of morningevents&#x0a;without alarms." FontSize="14" Foreground="{StaticResource PhoneAccentBrush}" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            <CheckBox x:Name="LiveTileCheckbox" Grid.Row="7" Grid.Column="1" Width="56" HorizontalAlignment="Center" Checked="LiveTileCheckbox_Checked" Unchecked="LiveTileCheckbox_Unchecked" Margin="0,-5,0,0"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
